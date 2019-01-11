@@ -86,6 +86,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemodel
   activerecord
   database_cleaner
   factory_bot

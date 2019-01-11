@@ -1,8 +1,13 @@
 require 'active_record'
 
 class Merchant < ActiveRecord::Base
-  has_many :matchers
-  has_many :children, foreign_key: 'merchant_id', class_name: 'Merchant'
+  include ActiveModel::Validations
 
-  def match(description); end
+  belongs_to :parent, class_name: 'Merchant'
+
+  has_many :matchers
+  has_many :transactions
+  has_many :children, foreign_key: 'parent_id', class_name: 'Merchant'
+
+  validates :name, presence: true
 end
